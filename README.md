@@ -1,5 +1,5 @@
 # catch-of-the-day
-Project in React Js from course https://reactforbeginners.com/
+Project in React Js from course https://reactforbeginners.com/ - Wes Bos 🔥
 
 A premium step-by-step training course to get you building real world React.js + Firebase apps and website components.
 
