@@ -2,13 +2,15 @@ import React, {Component} from "react";
 import AddFishForm from "./AddFishForm";
 
 class Inventory extends Component{
-    render(){
+    render() {
+        const { addFish, loadSampleFishes } = this.props;
+
         return (
             <div className="inventory">
                 <h2>Inventory</h2>
-                <AddFishForm addFish={this.props.addFish}/>
+                <AddFishForm addFish={addFish}/>
                 <button
-                    onClick={this.props.loadSampleFishes}>
+                    onClick={loadSampleFishes}>
                     Load Sample Fishes
                 </button>
             </div>

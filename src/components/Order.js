@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from "react";
 
-class Order extends React.Component{
-    render(){
+class Order extends Component{
+    render() {
         return <div className="order">Order!</div>
     }
 }
