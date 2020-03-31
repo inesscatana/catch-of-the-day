@@ -2,18 +2,6 @@
   "name": "catch-of-the-day",
   "version": "0.0.3",
   "private": true,
-  "description": "Project in React Js from course https://reactforbeginners.com/ - Wes Bos 🔥",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/inesantos29/catch-of-the-day.git"
-  },
-  "author": "Inês dos Santos",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/inesantos29/catch-of-the-day/issues"
-  },
-  "homepage": "https://github.com/inesantos29/catch-of-the-day#readme",
   "devDependencies": {
     "concurrently": "^5.1.0",
     "react-scripts": "^3.4.1"
@@ -37,6 +25,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
+    "now-build": "npm run build && mv build dist",
     "styles:watch": "npm run styles -- -w"
   },
   "browserslist": [
