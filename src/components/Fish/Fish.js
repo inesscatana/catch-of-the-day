@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { formatPrice } from '../utils/helpers'
+import { formatPrice } from '../../utils/helpers'
 
 class Fish extends Component {
   render() {

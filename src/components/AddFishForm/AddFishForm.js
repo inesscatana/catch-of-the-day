@@ -1,15 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 
 class AddFishForm extends Component {
-  nameRef = React.createRef()
-  priceRef = React.createRef()
-  statusRef = React.createRef()
-  descRef = React.createRef()
-  imageRef = React.createRef()
+  nameRef = createRef()
+  priceRef = createRef()
+  statusRef = createRef()
+  descRef = createRef()
+  imageRef = createRef()
 
-  createFish = event => {
-    // 1. stop the form from submitting
-    event.preventDefault()
+  createFish = e => {
+    e.preventDefault()
     const fish = {
       name: this.nameRef.current.value,
       price: parseFloat(this.priceRef.current.value),
@@ -18,8 +17,7 @@ class AddFishForm extends Component {
       image: this.imageRef.current.value
     }
     this.props.addFish(fish)
-    // refresh the form
-    event.currentTarget.reset()
+    e.currentTarget.reset()
   }
 
   render() {
