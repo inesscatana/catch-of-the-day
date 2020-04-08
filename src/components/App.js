@@ -2,16 +2,30 @@ import React, { Component } from 'react'
 import { Header } from './Header'
 import { Order } from './Order'
 import { Inventory } from './Inventory'
-import sampleFishes from '../utils/sample-fishes'
 import { Fish } from './Fish'
+
+import sampleFishes from '../utils/sample-fishes'
+import base from '../base'
 
 class App extends Component {
   state = {
     fishes: {},
-    order: {}
+    order: {},
   }
 
-  addFish = fish => {
+  componentDidMount() {
+    const { params } = this.props.match
+    this.ref = base.syncState(`${params.storeId}/fishes`, {
+      context: this,
+      state: 'fishes',
+    })
+  }
+
+  componentWillMount() {
+    base.removeBinding(this.ref)
+  }
+
+  addFish = (fish) => {
     const fishes = { ...this.state.fishes }
     fishes[`fish${Date.now()}`] = fish
     this.setState({ fishes })
@@ -21,7 +35,7 @@ class App extends Component {
     this.setState({ fishes: sampleFishes })
   }
 
-  addToOrder = key => {
+  addToOrder = (key) => {
     const order = { ...this.state.order }
     order[key] = order[key] + 1 || 1
     this.setState({ order })
@@ -35,7 +49,7 @@ class App extends Component {
         <div className="menu">
           <Header tagline="Fresh Seafood Market" />
           <ul className="fishes">
-            {Object.keys(fishes).map(key => (
+            {Object.keys(fishes).map((key) => (
               <Fish
                 key={key}
                 index={key}
