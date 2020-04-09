@@ -22,7 +22,7 @@
 
 - React
 - React Router
-- ProtoTypes
+- PropTypes
 - React Transition Group
 - Firebase
 
