@@ -9,8 +9,4 @@ const firebaseApp = firebase.initializeApp({
 
 const base = Rebase.createClass(firebaseApp.database())
 
-// named export
-export { firebase }
-
-// default export
 export default base

@@ -5,7 +5,7 @@ import { Inventory } from './Inventory'
 import { Fish } from './Fish'
 
 import sampleFishes from '../utils/sample-fishes'
-import base from '../base'
+import base from '../utils/base'
 
 class App extends Component {
   state = {
@@ -15,6 +15,7 @@ class App extends Component {
 
   componentDidMount() {
     const { params } = this.props.match
+    // first reinstate our localStorage
     const localStorageRef = localStorage.getItem(params.storeId)
     if (localStorageRef) {
       this.setState({ order: JSON.parse(localStorageRef) })
@@ -27,17 +28,31 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    const { params } = this.props.match
-    localStorage.setItem(params.storeId, JSON.stringify(this.state.order))
+    localStorage.setItem(
+      this.props.match.params.storeId,
+      JSON.stringify(this.state.order)
+    )
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     base.removeBinding(this.ref)
   }
 
   addFish = (fish) => {
+    // 1. Take a copy of the existing state
     const fishes = { ...this.state.fishes }
+    // 2. Add our new fish to that fishes variable
     fishes[`fish${Date.now()}`] = fish
+    // 3. Set the new fishes object to state
+    this.setState({ fishes })
+  }
+
+  updateFish = (key, updatedFish) => {
+    // 1. Take a copy of the current state
+    const fishes = { ...this.state.fishes }
+    // 2. Update that state
+    fishes[key] = updatedFish
+    // 3. Set that to state
     this.setState({ fishes })
   }
 
@@ -46,8 +61,11 @@ class App extends Component {
   }
 
   addToOrder = (key) => {
+    // 1. take a copy of state
     const order = { ...this.state.order }
+    // 2. Either add to the order, or update the number in our order
     order[key] = order[key] + 1 || 1
+    // 3. Call setState to update our state object
     this.setState({ order })
   }
 
@@ -72,7 +90,9 @@ class App extends Component {
         <Order fishes={fishes} order={order} />
         <Inventory
           addFish={this.addFish}
+          updateFish={this.updateFish}
           loadSampleFishes={this.loadSampleFishes}
+          fishes={fishes}
         />
       </div>
     )
