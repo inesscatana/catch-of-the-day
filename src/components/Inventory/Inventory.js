@@ -2,7 +2,13 @@ import React from 'react'
 import { AddFishForm } from '../AddFishForm'
 import { EditFishForm } from '../EditFishForm'
 
-const Inventory = ({ addFish, loadSampleFishes, fishes, updateFish }) => (
+const Inventory = ({
+  addFish,
+  updateFish,
+  deleteFish,
+  loadSampleFishes,
+  fishes,
+}) => (
   <div className="inventory">
     <h2>Inventory</h2>
     {Object.keys(fishes).map((key) => (
@@ -11,6 +17,7 @@ const Inventory = ({ addFish, loadSampleFishes, fishes, updateFish }) => (
         index={key}
         fish={fishes[key]}
         updateFish={updateFish}
+        deleteFish={deleteFish}
       />
     ))}
     <AddFishForm addFish={addFish} />
