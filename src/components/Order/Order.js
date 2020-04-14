@@ -10,7 +10,6 @@ class Order extends Component {
     order: PropTypes.object,
     removeFromOrder: PropTypes.func,
   }
-
   renderOrder = (key) => {
     const fish = this.props.fishes[key]
     const count = this.props.order[key]
@@ -45,12 +44,12 @@ class Order extends Component {
                 <span>{count}</span>
               </CSSTransition>
             </TransitionGroup>
-            lbs {fish.name}
+            <span>lbs {fish.name} </span>
             {formatPrice(count * fish.price)}
-            <button onClick={() => this.props.removeFromOrder(key)}>
-              &times;
-            </button>
           </span>
+          <button onClick={() => this.props.removeFromOrder(key)}>
+            &times;
+          </button>
         </li>
       </CSSTransition>
     )
@@ -74,7 +73,7 @@ class Order extends Component {
         </TransitionGroup>
         <div className="total">
           Total:
-          <strong>{formatPrice(total)}</strong>
+          <strong> {formatPrice(total)}</strong>
         </div>
       </div>
     )
