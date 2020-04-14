@@ -1,10 +1,16 @@
 import React, { Component, createRef } from 'react'
+import PropTypes from 'prop-types'
+
 import { getFunName } from '../../utils/helpers'
 
 class StorePicker extends Component {
+  static propTypes = {
+    history: PropTypes.object,
+  }
+
   inputRef = createRef()
 
-  goToStore = e => {
+  goToStore = (e) => {
     e.preventDefault()
     const storeName = this.inputRef.current.value
     this.props.history.push(`/store/${storeName}`)

@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { AddFishForm } from '../AddFishForm'
 import { EditFishForm } from '../EditFishForm'
 
@@ -24,5 +26,12 @@ const Inventory = ({
     <button onClick={loadSampleFishes}>Load Sample Fishes</button>
   </div>
 )
+
+Inventory.propTypes = {
+  fishes: PropTypes.object,
+  updateFish: PropTypes.func,
+  deleteFish: PropTypes.func,
+  loadSampleFishes: PropTypes.func,
+}
 
 export default Inventory
