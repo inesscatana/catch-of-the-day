@@ -24,6 +24,7 @@
 - React Router
 - PropTypes
 - React Transition Group
+- Stylus
 - Firebase
 
 #### Install
